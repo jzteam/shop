@@ -13,21 +13,23 @@ import javax.servlet.http.HttpServletResponse;
 
 public class UnicodeFilter implements Filter {
 
-	public void destroy() {
-		
-	}
+    public void destroy() {
 
-	public void doFilter(ServletRequest request, ServletResponse response,
-			FilterChain chain) throws IOException, ServletException {
-		request.setCharacterEncoding("gb2312");
-		response.setCharacterEncoding("gb2312");
-		HttpServletRequest httpreq = (HttpServletRequest)request;
-		HttpServletResponse httpresp = (HttpServletResponse)response;
-		chain.doFilter(httpreq, httpresp);
-	}
+    }
 
-	public void init(FilterConfig config) throws ServletException {
-		
-	}
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException,
+            ServletException {
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
+        HttpServletRequest httpreq = (HttpServletRequest) request;
+        HttpServletResponse httpresp = (HttpServletResponse) response;
+        // 允许跨域请求
+        httpresp.addHeader("Access-Control-Allow-Origin", "*");
+        chain.doFilter(httpreq, httpresp);
+    }
+
+    public void init(FilterConfig config) throws ServletException {
+
+    }
 
 }
