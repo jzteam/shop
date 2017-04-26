@@ -23,3 +23,20 @@
 	
 10、GetGoodsByTypeServlet 根据查询类型返回商品
 	type 查询类型
+	
+11、GetGoodsPagerServlet 分页查询商品
+	pager.offset 起始数量
+	pageSize 每页容量
+	
+12、GetInformPagerServlet 分页查询新闻
+	pager.offset 起始数量
+	pageSize 每页容量
+
+13、GetSubTypeBySuperTypeId  通过分类类型查
+	superTypeId
+
+14、LoginServlet 登录
+	name 用户名
+	password 密码
+	
+15、
