@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mall.common.ResultJsonUtil;
 import com.mall.model.Model;
 import com.mall.po.SubType;
 
@@ -27,15 +28,17 @@ public class GetSubTypeBySuperTypeId extends HttpServlet {
 		}
 		Model model = new Model();
 		List subTypes = model.getSubTypeBySuperTypeId(superTypeId);
-		out.println("<subTypes>");
-		for(int i = 0;i<subTypes.size();i++) {
-			SubType subType = (SubType)subTypes.get(i);
-			out.println("<subType>");
-			out.println("<subTypeId>"+subType.getSubTypeId()+"</subTypeId>");
-			out.println("<subTypeName>"+subType.getTypeName()+"</subTypeName>");
-			out.println("</subType>");
-		}
-		out.println("</subTypes>");
+//		out.println("<subTypes>");
+//		for(int i = 0;i<subTypes.size();i++) {
+//			SubType subType = (SubType)subTypes.get(i);
+//			out.println("<subType>");
+//			out.println("<subTypeId>"+subType.getSubTypeId()+"</subTypeId>");
+//			out.println("<subTypeName>"+subType.getTypeName()+"</subTypeName>");
+//			out.println("</subType>");
+//		}
+//		out.println("</subTypes>");
+		
+		ResultJsonUtil.success(response, subTypes);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

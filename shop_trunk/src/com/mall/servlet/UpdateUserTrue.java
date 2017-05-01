@@ -8,7 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+import com.alibaba.fastjson.JSON;
+import com.mall.common.ResultJsonUtil;
 import com.mall.model.Model;
 import com.mall.po.User;
 
@@ -17,8 +18,8 @@ public class UpdateUserTrue extends HttpServlet {
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("gb2312");
-		response.setCharacterEncoding("gb2312");
+//		request.setCharacterEncoding("gb2312");
+//		response.setCharacterEncoding("gb2312");
 		
 		HttpSession session = request.getSession(); 
 		//String randomCode = (String) session.getAttribute("randomCode");
@@ -26,6 +27,7 @@ public class UpdateUserTrue extends HttpServlet {
 		User user= new User(); 
 		//String code = request.getParameter("code");
 		//if(randomCode.equals(code)){
+		String userId = request.getParameter("id");
 	      String name = request.getParameter("name");      
 	      //String password= request.getParameter("password") ;
 	      String email= request.getParameter("email");
@@ -52,18 +54,25 @@ public class UpdateUserTrue extends HttpServlet {
 	       user.setQuestion(question);
 	       user.setAnswer(answer);
 	       user.setImg(img);
-	       System.out.println("********");
+	       System.out.println("user="+JSON.toJSONString(user));
 	       Model model = new Model();
 		   Boolean bo =    model.updateUser(user);
 	     
-		    if(bo){//修改成功，又将它返回到查看用户资料页面
-		    	   session.setAttribute("user", user);
-		   	    response.sendRedirect("onePage.jsp");
-		       }
+//		    if(bo){//修改成功，又将它返回到查看用户资料页面
+//		    	   session.setAttribute("user", user);
+//		   	    response.sendRedirect("onePage.jsp");
+//		       }
 	         //else{//验证码错误将跳转
 				//request.setAttribute("codeEnrool", "验证码错误");
 				//request.getRequestDispatcher("okLoggin/updateUsere.jsp").forward(request, response);
 			//}
+		   
+		   if(bo){//修改成功，又将它返回到查看用户资料页面
+	    	   session.setAttribute("user", user);
+	   	    	ResultJsonUtil.success(response, user);
+	       }else{
+	    	   ResultJsonUtil.fail(response, "操作失败");
+	       }
 	}
 
 	

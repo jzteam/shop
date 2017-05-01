@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mall.common.ResultJsonUtil;
 import com.mall.model.Model;
 import com.mall.po.User;
 
@@ -16,7 +17,7 @@ public class RegisterServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//获取数据乱码处理
-		request.setCharacterEncoding("gb2312");
+//		request.setCharacterEncoding("gb2312");
 		//获取客户端发送过来的信息
 		String name = request.getParameter("name");
 		String password=request.getParameter("password");
@@ -47,10 +48,13 @@ public class RegisterServlet extends HttpServlet {
 			if(model.addUser(user)){
 				//注册成功
 				request.getSession().setAttribute("user", user);
-				response.sendRedirect("index.jsp");
+//				response.sendRedirect("index.jsp");
+				
+				ResultJsonUtil.success(response, user);
 			}else {
 				//注册失败
-				response.sendRedirect("errRegister.jsp");
+//				response.sendRedirect("errRegister.jsp");
+				ResultJsonUtil.fail(response, "注册失败");
 			}	
 	}
 
