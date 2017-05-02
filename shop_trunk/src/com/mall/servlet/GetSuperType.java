@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mall.common.ResultJsonUtil;
 import com.mall.model.Model;
 import com.mall.po.SuperType;
 
@@ -22,15 +23,17 @@ public class GetSuperType extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Model model = new Model();
 		List superTypes = model.getSuperType();
-		out.println("<supers>");
-		for(int i=0;i<superTypes.size();i++) {
-			SuperType superType = (SuperType) superTypes.get(i);
-			out.println("<super>");
-			out.println("<superId>"+ superType.getSuperTypeId()+"</superId>");
-			out.println("<superName>"+ superType.getTypeName()+"</superName>");
-			out.println("</super>");
-		}
-		out.println("</supers>");
+//		out.println("<supers>");
+//		for(int i=0;i<superTypes.size();i++) {
+//			SuperType superType = (SuperType) superTypes.get(i);
+//			out.println("<super>");
+//			out.println("<superId>"+ superType.getSuperTypeId()+"</superId>");
+//			out.println("<superName>"+ superType.getTypeName()+"</superName>");
+//			out.println("</super>");
+//		}
+//		out.println("</supers>");
+		
+		ResultJsonUtil.success(response, superTypes);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -1,7 +1,10 @@
 package com.mall.po;
 
-public class SuperType {
-	
+import java.io.Serializable;
+
+public class SuperType implements Serializable{
+	private static final long serialVersionUID = 1L;
+
 	private int superTypeId;
 
 	private String typeName;

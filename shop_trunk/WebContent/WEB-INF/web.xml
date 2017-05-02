@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" version="2.4">
-  <listener>
-    <listener-class>com.mall.listener.UserLoginListener</listener-class>
-  </listener>
-  <filter>
-    <filter-name>WordsFilter</filter-name>
-    <filter-class>com.mall.filter.WordsFilter</filter-class>
-    <init-param>
-      <param-name>filePath</param-name>
-      <param-value>/WEB-INF/word.txt</param-value>
-    </init-param>
-  </filter>
-  <filter-mapping>
-    <filter-name>WordsFilter</filter-name>
-    <url-pattern>/checkLogin_Note</url-pattern>
-  </filter-mapping>
-  <welcome-file-list>
-    <welcome-file>getGoodsByTypeServlet</welcome-file>
-  </welcome-file-list>
+<web-app version="2.4" 
+	xmlns="http://java.sun.com/xml/ns/j2ee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<!-- 前台部分 -->
+	<listener>
+		<listener-class>com.mall.listener.UserLoginListener</listener-class>
+	</listener>	
+	<filter>
+		<filter-name>WordsFilter</filter-name>
+		<filter-class>com.mall.filter.WordsFilter</filter-class>
+		<init-param>
+			<param-name>filePath</param-name>
+			<param-value>/WEB-INF/word.txt</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>WordsFilter</filter-name>
+		<url-pattern>/checkLogin_Note</url-pattern>
+	</filter-mapping>	
+	<welcome-file-list>
+    	<welcome-file>getGoodsByTypeServlet</welcome-file>
+    </welcome-file-list>
+	
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>com.mall.servlet.LoginServlet</servlet-class>
@@ -26,10 +32,12 @@
     <servlet-name>PageServlet</servlet-name>
     <servlet-class>com.mall.servlet.PageServlet</servlet-class>
   </servlet>
+  
   <servlet>
     <servlet-name>RegisterServlet</servlet-name>
     <servlet-class>com.mall.servlet.RegisterServlet</servlet-class>
   </servlet>
+
   <servlet>
     <servlet-name>userManager</servlet-name>
     <servlet-class>com.mall.servlet.UserManager</servlet-class>
@@ -126,10 +134,31 @@
     <servlet-name>UpdataPwd</servlet-name>
     <servlet-class>com.mall.servlet.UpdataPwd</servlet-class>
   </servlet>
-  <servlet>
+   <servlet>
     <servlet-name>DetailSearch</servlet-name>
     <servlet-class>com.mall.servlet.DetailSearch</servlet-class>
   </servlet>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/login</url-pattern>
@@ -218,7 +247,7 @@
     <servlet-name>CheckRandomCode</servlet-name>
     <url-pattern>/checkRandomCode</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
+    <servlet-mapping>
     <servlet-name>ShowSuperTypeServlet</servlet-name>
     <url-pattern>/showSuperTypeServlet</url-pattern>
   </servlet-mapping>
@@ -242,25 +271,31 @@
     <servlet-name>DetailSearch</servlet-name>
     <url-pattern>/detailSearch</url-pattern>
   </servlet-mapping>
-  <listener>
-    <listener-class>com.mall.listener.AdminLoginListener</listener-class>
-  </listener>
-  <filter>
-    <filter-name>code</filter-name>
-    <filter-class>com.mall.filter.UnicodeFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>code</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
-  <filter>
-    <filter-name>adminlogin</filter-name>
-    <filter-class>com.mall.filter.AdminLoginFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>adminlogin</filter-name>
-    <url-pattern>/Admin/pages/*</url-pattern>
-  </filter-mapping>
+  
+  
+  
+  <!-- 后台部分 -->
+   <listener>
+		<listener-class>com.mall.listener.AdminLoginListener</listener-class>
+	</listener>
+	<filter>
+		<filter-name>code</filter-name>
+		<filter-class>com.mall.filter.UnicodeFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>code</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>adminlogin</filter-name>
+		<filter-class>com.mall.filter.AdminLoginFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>adminlogin</filter-name>
+		<url-pattern>/Admin/pages/*</url-pattern>
+	</filter-mapping>
+	
   <servlet>
     <servlet-name>GetAllUserServlet</servlet-name>
     <servlet-class>com.mall.servlet.GetAllUserServlet</servlet-class>
@@ -285,14 +320,15 @@
     <servlet-name>GetAllGoodsServlet</servlet-name>
     <servlet-class>com.mall.servlet.GetAllGoodsServlet</servlet-class>
   </servlet>
-  <servlet>
+    <servlet>
     <servlet-name>GetGoodsByTypeServlet</servlet-name>
     <servlet-class>com.mall.servlet.GetGoodsByTypeServlet</servlet-class>
   </servlet>
-  <servlet>
+      <servlet>
     <servlet-name>UpdateGoodsServlet</servlet-name>
     <servlet-class>com.mall.servlet.UpdateGoodsServlet</servlet-class>
   </servlet>
+
   <servlet>
     <servlet-name>GetAllNotesServlet</servlet-name>
     <servlet-class>com.mall.servlet.GetAllNotesServlet</servlet-class>
@@ -349,7 +385,7 @@
     <servlet-name>DeleteInformServlet</servlet-name>
     <servlet-class>com.mall.servlet.DeleteInformServlet</servlet-class>
   </servlet>
-  <servlet>
+   <servlet>
     <servlet-name>DeleteAdminsServlet</servlet-name>
     <servlet-class>com.mall.servlet.DeleteAdminsServlet</servlet-class>
   </servlet>
@@ -457,7 +493,7 @@
     <servlet-name>CheckSubTypeIsExist</servlet-name>
     <servlet-class>com.mall.servlet.CheckSubTypeIsExist</servlet-class>
   </servlet>
-  <servlet>
+    <servlet>
     <servlet-name>CheckLoginNameIsExist</servlet-name>
     <servlet-class>com.mall.servlet.CheckLoginNameIsExist</servlet-class>
   </servlet>
@@ -469,10 +505,52 @@
     <servlet-name>UpdateAdminServlet</servlet-name>
     <servlet-class>com.mall.servlet.UpdateAdminServlet</servlet-class>
   </servlet>
+
   <servlet>
     <servlet-name>UpdateGoodServlet</servlet-name>
     <servlet-class>com.mall.servlet.UpdateGoodServlet</servlet-class>
   </servlet>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <servlet-mapping>
     <servlet-name>UpdateAdminServlet</servlet-name>
     <url-pattern>/updateAdminServlet</url-pattern>
@@ -493,7 +571,7 @@
     <servlet-name>GetSuperType</servlet-name>
     <url-pattern>/getSuperType</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
+    <servlet-mapping>
     <servlet-name>GetAdminType</servlet-name>
     <url-pattern>/getAdminType</url-pattern>
   </servlet-mapping>
@@ -529,7 +607,7 @@
     <servlet-name>GetOneUserServlet</servlet-name>
     <url-pattern>/getOneUserServlet</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
+    <servlet-mapping>
     <servlet-name>GetOneAdminServlet</servlet-name>
     <url-pattern>/getOneAdminServlet</url-pattern>
   </servlet-mapping>
@@ -541,7 +619,7 @@
     <servlet-name>GetUserPagerServlet</servlet-name>
     <url-pattern>/getUserPagerServlet</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
+    <servlet-mapping>
     <servlet-name>GetAdminPagerServlet</servlet-name>
     <url-pattern>/getAdminPagerServlet</url-pattern>
   </servlet-mapping>
@@ -565,7 +643,7 @@
     <servlet-name>DeleteInformServlet</servlet-name>
     <url-pattern>/deleteInform</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
+    <servlet-mapping>
     <servlet-name>DeleteAdminsServlet</servlet-name>
     <url-pattern>/deleteAdmin</url-pattern>
   </servlet-mapping>
@@ -653,7 +731,7 @@
     <servlet-name>GetGoodsPagerServlet</servlet-name>
     <url-pattern>/getGoodsPagerServlet</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
+    <servlet-mapping>
     <servlet-name>UpdateGoodServlet</servlet-name>
     <url-pattern>/updateGoodServlet</url-pattern>
   </servlet-mapping>
@@ -677,7 +755,7 @@
     <servlet-name>CheckSubTypeIsExist</servlet-name>
     <url-pattern>/checkSubTypeIsExist</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
+    <servlet-mapping>
     <servlet-name>CheckLoginNameIsExist</servlet-name>
     <url-pattern>/checkLoginNameIsExist</url-pattern>
   </servlet-mapping>
@@ -685,27 +763,30 @@
     <servlet-name>UserLoginOut</servlet-name>
     <url-pattern>/userLoginOut</url-pattern>
   </servlet-mapping>
+  
+  
+  <!-- djm -->
   <servlet>
     <servlet-name>AllowAddSuperServlet</servlet-name>
     <servlet-class>com.mall.servlet.AllowAddSuperServlet</servlet-class>
   </servlet>
-  <servlet-mapping>
+    <servlet-mapping>
     <servlet-name>AllowAddSuperServlet</servlet-name>
     <url-pattern>/allowAddSuperServlet</url-pattern>
   </servlet-mapping>
-  <servlet>
+    <servlet>
     <servlet-name>AllowAddSubServlet</servlet-name>
     <servlet-class>com.mall.servlet.AllowAddSubServlet</servlet-class>
   </servlet>
-  <servlet-mapping>
+    <servlet-mapping>
     <servlet-name>AllowAddSubServlet</servlet-name>
     <url-pattern>/allowAddSubServlet</url-pattern>
   </servlet-mapping>
-  <servlet>
+      <servlet>
     <servlet-name>AllowAddGoodsServlet</servlet-name>
     <servlet-class>com.mall.servlet.AllowAddGoodsServlet</servlet-class>
   </servlet>
-  <servlet-mapping>
+    <servlet-mapping>
     <servlet-name>AllowAddGoodsServlet</servlet-name>
     <url-pattern>/allowAddGoodsServlet</url-pattern>
   </servlet-mapping>
@@ -713,18 +794,19 @@
     <servlet-name>AllowAddAdminServlet</servlet-name>
     <servlet-class>com.mall.servlet.AllowAddAdminServlet</servlet-class>
   </servlet>
-  <servlet-mapping>
+   <servlet-mapping>
     <servlet-name>AllowAddAdminServlet</servlet-name>
     <url-pattern>/allowAddAdminServlet</url-pattern>
   </servlet-mapping>
-  <servlet>
+    <servlet>
     <servlet-name>AddAdminServlet</servlet-name>
     <servlet-class>com.mall.servlet.AddAdminServlet</servlet-class>
   </servlet>
-  <servlet-mapping>
+   <servlet-mapping>
     <servlet-name>AddAdminServlet</servlet-name>
     <url-pattern>/addAdminServlet</url-pattern>
   </servlet-mapping>
+  <!-- djm -->
   <servlet>
     <servlet-name>OneUserManameServlet</servlet-name>
     <servlet-class>com.mall.servlet.OneUserManameServlet</servlet-class>
@@ -737,10 +819,10 @@
     <servlet-name>UpdateUserAll</servlet-name>
     <servlet-class>com.mall.servlet.UpdateUserAll</servlet-class>
   </servlet>
-  <servlet>
-    <servlet-name>src</servlet-name>
-    <servlet-class>com.mall.common.RandomCodeServlet</servlet-class>
-  </servlet>
+<servlet>
+<servlet-name>src</servlet-name>
+<servlet-class>com.mall.common.RandomCodeServlet</servlet-class>
+</servlet>
   <servlet>
     <servlet-name>UpdateUserTrue</servlet-name>
     <servlet-class>com.mall.servlet.UpdateUserTrue</servlet-class>
@@ -750,6 +832,7 @@
     <servlet-class>com.mall.servlet.CheckCode</servlet-class>
   </servlet>
   <servlet>
+
     <servlet-name>SelectOrder</servlet-name>
     <servlet-class>com.mall.servlet.SelectOrder</servlet-class>
   </servlet>
@@ -757,6 +840,12 @@
     <servlet-name>SonOrder</servlet-name>
     <servlet-class>com.mall.servlet.SonOrder</servlet-class>
   </servlet>
+
+
+
+
+
+
   <servlet-mapping>
     <servlet-name>OneUserManameServlet</servlet-name>
     <url-pattern>/okLoggin</url-pattern>

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mall.common.ResultJsonUtil;
 import com.mall.model.ModelOrder;
 import com.mall.po.Order;
 
@@ -19,7 +20,9 @@ public class SelectOrder extends HttpServlet {
 		ModelOrder model = new ModelOrder();
 		List list = model.selectOr(name);
 		request.getSession().setAttribute("list", list);
-		response.sendRedirect("selfOrder.jsp");
+//		response.sendRedirect("selfOrder.jsp");
+		
+		ResultJsonUtil.success(response, list);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

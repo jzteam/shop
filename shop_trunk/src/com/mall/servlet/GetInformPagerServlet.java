@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mall.common.ResultJsonUtil;
 import com.mall.model.Model;
 import com.mall.po.InformPager;
 
@@ -35,9 +36,11 @@ public class GetInformPagerServlet extends HttpServlet {
 		informPager.setPageOffset(pageOffset);
 		informPager.setPageSize(pageSize);
 		informPager.setPagecurrentPageNo(pagecurrentPageNo);
-		request.setAttribute("informPager", informPager);
-		request.setAttribute("informList", informPager.getImformMap().values());
-		request.getRequestDispatcher("Admin/pages/manageInform.jsp").forward(request, response);
+//		request.setAttribute("informPager", informPager);
+//		request.setAttribute("informList", informPager.getImformMap().values());
+//		request.getRequestDispatcher("Admin/pages/manageInform.jsp").forward(request, response);
+		
+		ResultJsonUtil.success(response, informPager);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

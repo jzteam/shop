@@ -1,6 +1,6 @@
-/bulid/
+bulid/
 .*
 !.gitignore
-/lib/
-/logs/
-/target/
+lib/
+logs/
+target/

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mall.common.ResultJsonUtil;
 import com.mall.model.Model;
 import com.mall.po.Note;
 
@@ -26,8 +27,10 @@ public class AddNoteServlet extends HttpServlet {
 		Model model = new Model();
 		if(model.addNote(note)){//留言成功
 			String message2 = "发表留言成功"; 
-			request.setAttribute("message2", message2);
-			request.getRequestDispatcher("pageNoteServlet").forward(request, response);
+//			request.setAttribute("message2", message2);
+//			request.getRequestDispatcher("pageNoteServlet").forward(request, response);
+			
+			ResultJsonUtil.success(response, message2);
 		}
 	}
 
