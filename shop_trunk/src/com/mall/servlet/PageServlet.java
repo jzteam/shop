@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mall.common.ResultJsonUtil;
 import com.mall.model.Model;
 import com.mall.po.Page;
 
@@ -14,12 +15,17 @@ public class PageServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int pageSize = 6;
 		int pageNo = 0;
 		int type = 0;
 		int index = 0;//问号位置
 		String str_type = null;
 		String str_pageNo = null;
+		String pageSize_str = request.getParameter("pageSize");
+		
+		int pageSize = 6;
+		if(pageSize_str != null && !pageSize_str.trim().equals("")){
+			pageSize = Integer.parseInt(pageSize_str);
+		}
 		String str = request.getParameter("type");
 		
 		String str2 = request.getParameter("sid");//大分类ID
@@ -46,14 +52,16 @@ public class PageServlet extends HttpServlet {
 		
 		Page page = model.doPage(type,pageNo, pageSize,superid);
 		//设置大分类ID，供翻页使用。
-		if(superid != -1) 
-		{
-			request.setAttribute("sid", superid);
-		}
-		//END
-		request.setAttribute("type", type);
-		request.setAttribute("page", page);
-		request.getRequestDispatcher("category.jsp").forward(request, response);
+//		if(superid != -1) 
+//		{
+//			request.setAttribute("sid", superid);
+//		}
+//		//END
+//		request.setAttribute("type", type);
+//		request.setAttribute("page", page);
+//		request.getRequestDispatcher("category.jsp").forward(request, response);
+		
+		ResultJsonUtil.success(response, page);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

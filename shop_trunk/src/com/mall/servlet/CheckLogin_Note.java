@@ -15,8 +15,8 @@ public class CheckLogin_Note extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//乱码处理
-		request.setCharacterEncoding("gb2312");
-		response.setContentType("text/html;charset=gb2312");
+//		request.setCharacterEncoding("gb2312");
+//		response.setContentType("text/html;charset=gb2312");
 	
 		User user = (User)request.getSession().getAttribute("user");
 		if(user!= null){//已经登录，可以留言了

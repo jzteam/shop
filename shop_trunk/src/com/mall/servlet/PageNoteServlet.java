@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mall.common.ResultJsonUtil;
 import com.mall.daoimpl.NoMessageException;
 import com.mall.model.Model;
 import com.mall.po.Page;
@@ -23,12 +24,16 @@ public class PageNoteServlet extends HttpServlet {
 		}
 		Model model = new Model();
 		try{
-		Page page = model.doNotePage(pageNo, pageSize);
-		request.setAttribute("page", page);
-		request.getRequestDispatcher("showNoteServlet").forward(request, response);
+			Page page = model.doNotePage(pageNo, pageSize);
+//			request.setAttribute("page", page);
+//			request.getRequestDispatcher("showNoteServlet").forward(request, response);
+			
+			ResultJsonUtil.success(response, page);
 		}catch(NoMessageException e){
-			request.setAttribute("NoMessageException",e.getMessage());
-			request.getRequestDispatcher("note.jsp").forward(request, response);
+//			request.setAttribute("NoMessageException",e.getMessage());
+//			request.getRequestDispatcher("note.jsp").forward(request, response);
+			
+			ResultJsonUtil.fail(response,e.getMessage());
 		}
 	}
 

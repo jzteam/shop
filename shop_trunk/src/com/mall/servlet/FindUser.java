@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.mall.common.DbUtil;
+import com.mall.common.ResultJsonUtil;
 import com.mall.po.User;
 
 public class FindUser extends HttpServlet {
@@ -39,10 +40,14 @@ public class FindUser extends HttpServlet {
 				  user.setQuestion(set.getString("question"));
 				  user.setAnswer(set.getString("answer"));
 				  request.getSession().setAttribute("user", user);
-				  request.getRequestDispatcher("findAnswer.jsp").forward(request, response);
+//				  request.getRequestDispatcher("findAnswer.jsp").forward(request, response);
+				  
+				  ResultJsonUtil.success(response, user);
 				}
 			} catch (Exception e) {
-				e.printStackTrace();
+//				e.printStackTrace();
+				
+				ResultJsonUtil.fail(response, "用户名不存在");
 			}
 	}
 }

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+import com.mall.common.ResultJsonUtil;
 import com.mall.model.Model;
 
 
@@ -34,14 +34,18 @@ public class UpdatePassword extends HttpServlet {
 		    		}else{
 		    			Boolean bo = model.updatePassword(name, newPassword1);
 		    			if(bo){
-		    				request.setAttribute("passwordOK","密码修改成功");
-		    						System.out.println(request.getAttribute("passwordOK"));
-							request.getRequestDispatcher("updatePassword.jsp").forward(request, response);
+//		    				request.setAttribute("passwordOK","密码修改成功");
+//		    						System.out.println(request.getAttribute("passwordOK"));
+//							request.getRequestDispatcher("updatePassword.jsp").forward(request, response);
+		    				
+		    				ResultJsonUtil.success(response, "密码修改成功");
 		    			}
 		    	   }
 			    }else{
-			    	request.setAttribute("passwordexception","旧密码出错了");
-			    	request.getRequestDispatcher("updatePassword.jsp").forward(request, response);
+//			    	request.setAttribute("passwordexception","旧密码出错了");
+//			    	request.getRequestDispatcher("updatePassword.jsp").forward(request, response);
+			    	
+			    	ResultJsonUtil.fail(response, "旧密码出错了");
 			    }
 	}
 

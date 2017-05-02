@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mall.common.ResultJsonUtil;
 import com.mall.model.Model;
 import com.mall.po.Goods;
 
@@ -25,9 +26,11 @@ public class ShowGoodsByIdServlet extends HttpServlet {
 		Goods Goods = model.showGoodsById(GoodsId);
 		request.setAttribute("Goods", Goods);
 		List records = model.showBuyRecordsById(GoodsId);
-		request.setAttribute("records", records);
+//		request.setAttribute("records", records);
+//		
+//		request.getRequestDispatcher("details.jsp").forward(request, response);
 		
-		request.getRequestDispatcher("details.jsp").forward(request, response);
+		ResultJsonUtil.success(response, records);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mall.common.ResultJsonUtil;
 import com.mall.model.Model;
 
 public class ShowAllGoodsByType extends HttpServlet {
@@ -15,16 +16,19 @@ public class ShowAllGoodsByType extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		Integer type = (Integer)request.getAttribute("type");
+		Integer type = Integer.parseInt(request.getParameter("type"));
 //		if(str_type != null){
 //			type = Integer.parseInt(str_type);
 //		}
 		System.out.println("typeinshow="+type);
 		Model model = new Model();
 		List GoodsList = model.showGoods(type, 1);
-		request.setAttribute("type", type);
-		request.setAttribute("GoodsList", GoodsList);
-		request.getRequestDispatcher("category.jsp").forward(request, response);
+//		request.setAttribute("type", type);
+//		request.setAttribute("GoodsList", GoodsList);
+//		request.getRequestDispatcher("category.jsp").forward(request, response);
+		
+		ResultJsonUtil.success(response, GoodsList);
+		
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

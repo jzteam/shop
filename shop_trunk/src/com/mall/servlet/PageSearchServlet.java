@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mall.common.ResultJsonUtil;
 import com.mall.daoimpl.NoRelativeGoodsException;
 import com.mall.model.Model;
 import com.mall.po.Page;
@@ -30,12 +31,15 @@ public class PageSearchServlet extends HttpServlet {
 		}
 		Model model = new Model();
 		try{
-		Page page = model.doPage(keywords,pageNo, pageSize);
-		request.setAttribute("page", page);
-		request.getRequestDispatcher("searchOut.jsp").forward(request, response);
+			Page page = model.doPage(keywords,pageNo, pageSize);
+//			request.setAttribute("page", page);
+//			request.getRequestDispatcher("searchOut.jsp").forward(request, response);
+			
+			ResultJsonUtil.success(response, page);
 		}catch(NoRelativeGoodsException e){
-			request.setAttribute("NoRelativeGoodsException", e.getMessage());
-			request.getRequestDispatcher("searchOut.jsp").forward(request, response);
+//			request.setAttribute("NoRelativeGoodsException", e.getMessage());
+//			request.getRequestDispatcher("searchOut.jsp").forward(request, response);
+			ResultJsonUtil.fail(response, e.getMessage());
 		}
 	}
 
