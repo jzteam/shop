@@ -73,10 +73,10 @@
 name 用户名	
 
 19、/newPassword  忘记密码
-name  用户名
-password  旧密码
-newPassword1 新密码
-newPassword2 新密码确认
+	name  用户名
+	password  旧密码
+	newPassword1 新密码
+	newPassword2 新密码确认
 
 20、订单list
 	/selectOrder
@@ -103,8 +103,8 @@ newPassword2 新密码确认
 		type
 		sid
 
-订单购买记录
-/showGoodsByIdServlet
+25、订单购买记录
+	/showGoodsByIdServlet
 		GoodsId
 
 
