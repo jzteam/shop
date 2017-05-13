@@ -18,6 +18,7 @@ public class GetGoodsByTypeServlet extends HttpServlet {
         String type = request.getParameter("type");
         if (type == null || type.trim().length() == 0) {
             ResultJsonUtil.fail(response, "参数type不能为空！");
+            return;
         }
 
         Model model = new Model();

@@ -247,7 +247,7 @@ public class UserDaoImpl implements UserDao{
 		DbUtil dbUtil = null;
 		
 		String sql = "select top "+pageSize+" * from tb_note where id not in "
-		+ "(select top "+currentPage+" id from tb_note )";
+		+ "(select top "+currentPage+" id from tb_note ) order by ly_time desc";
 		
 		try {
 			dbUtil = new DbUtil();

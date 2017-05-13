@@ -22,7 +22,7 @@ public class ShoppingFilter implements Filter {
         // 乱码处理
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
-
+        
         chain.doFilter(request, response);
 
     }

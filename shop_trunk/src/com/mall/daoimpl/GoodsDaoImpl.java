@@ -26,7 +26,7 @@ public class GoodsDaoImpl implements GoodsDao {
 		String sql = null;
 		if(type==0){
 			//显示所有商品
-			sql = "select * from tb_goods";
+			sql = "select * from tb_goods ";
 			try {
 				dbUtil = new DbUtil();
 				pstmt = dbUtil.getCon().prepareStatement(sql);
@@ -56,6 +56,8 @@ public class GoodsDaoImpl implements GoodsDao {
 					e.printStackTrace();
 				}
 			}
+			
+			return all;
 		}else {
 		if(type==1) {
 			//热卖商品
@@ -77,7 +79,6 @@ public class GoodsDaoImpl implements GoodsDao {
 			 // 分类查看
 				sql = "select * from tb_goods where superTypeId=?";
 		}
-		
 		
 		try {
 			dbUtil = new DbUtil();
@@ -510,13 +511,16 @@ public class GoodsDaoImpl implements GoodsDao {
 		ResultSet rs = null;
 		DbUtil dbUtil = null;
 		String sql = null;
-		sql = "select * from tb_goods where superTypeId=? and subTypeId=? and "+str[0]+" =?";
+		sql = "select top "+pageSize+" * from tb_goods where superTypeId=? and subTypeId=? and "+str[0]+" =? and bookId not in (select top "+currentPage+" bookId from tb_goods where superTypeId=? and subTypeId=? and "+str[0]+" =?)";
 		try {
 			dbUtil = new DbUtil();
 			pstmt = dbUtil.getCon().prepareStatement(sql);
 			pstmt.setInt(1, superTypeId);
 			pstmt.setInt(2, subTypeId);
 			pstmt.setString(3, str[1]);
+			pstmt.setInt(4, superTypeId);
+			pstmt.setInt(5, subTypeId);
+			pstmt.setString(6, str[1]);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 				Goods Goods = new Goods();

@@ -438,6 +438,10 @@
     <servlet-class>com.mall.servlet.GetNotePagerServlet</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>GetAllCartsServlet</servlet-name>
+    <servlet-class>com.mall.servlet.GetAllCartsServlet</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>GetOrderPagerServlet</servlet-name>
     <servlet-class>com.mall.servlet.GetOrderPagerServlet</servlet-class>
   </servlet>
@@ -586,6 +590,10 @@
   <servlet-mapping>
     <servlet-name>GetGoodsByTypeServlet</servlet-name>
     <url-pattern>/getGoodsByTypeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetAllCartsServlet</servlet-name>
+    <url-pattern>/getAllCartsServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>GetAllNotesServlet</servlet-name>

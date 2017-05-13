@@ -15,10 +15,10 @@ public class AddNoteServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String title = (String)request.getAttribute("title");
-		String content = (String)request.getAttribute("content");
-		String author = (String)request.getAttribute("author");
-		String pic = (String)request.getAttribute("pic");
+		String title = (String)request.getParameter("title");
+		String content = (String)request.getParameter("content");
+		String author = (String)request.getParameter("author");
+		String pic = (String)request.getParameter("pic");
 		Note note = new Note();
 		note.setTitle(title);
 		note.setAuthor(author);
