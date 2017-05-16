@@ -26,7 +26,11 @@ public class DetailSearch extends HttpServlet {
         if (str_pageroffset != null) {
             currentPage = Integer.parseInt(str_pageroffset);
         }
-        if (currentPage == 0 && str_pageroffset == null) {
+        String pageSizeStr = request.getParameter("pageSize");
+        if(pageSizeStr !=null && (pageSizeStr = pageSizeStr.trim()).length()> 0){
+        	pageSize = Integer.parseInt(pageSizeStr);
+        }
+        if (currentPage == 0) {
             superTypeId_str = request.getParameter("superType");
             subTypeId_str = request.getParameter("subT");
             searchMethod = request.getParameter("searchMethod");

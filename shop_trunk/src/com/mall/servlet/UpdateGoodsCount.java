@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+<<<<<<< HEAD
+=======
+import com.mall.common.ResultJsonUtil;
+>>>>>>> 72f07d975d6f1e9866413ca3fb1b7e799b08f132
 import com.mall.vo.Cart;
 
 public class UpdateGoodsCount extends HttpServlet {
@@ -23,8 +27,20 @@ public class UpdateGoodsCount extends HttpServlet {
 			count = Integer.parseInt(str_count);
 		}
 		Cart cart = (Cart)request.getSession().getAttribute("cart");
+<<<<<<< HEAD
 		cart.updateGoodsCount(GoodsId, count);
 		response.sendRedirect("buyGoodsServlet");
+=======
+		
+		if(cart == null || cart.getItemCount() == 0){
+			ResultJsonUtil.success(response, "购物车里没有任何商品");
+			return;
+		}
+		cart.updateGoodsCount(GoodsId, count);
+//		response.sendRedirect("buyGoodsServlet");
+		
+		ResultJsonUtil.success(response, "更新成功");
+>>>>>>> 72f07d975d6f1e9866413ca3fb1b7e799b08f132
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

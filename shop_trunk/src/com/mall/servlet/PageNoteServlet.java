@@ -19,6 +19,11 @@ public class PageNoteServlet extends HttpServlet {
 		int pageSize = 4; //每页显示留言条数
 		int pageNo = 0;//当前页码
 		String str_pageroffset = request.getParameter("pager.offset");
+		String str_pageSize = request.getParameter("pageSize");
+		
+		if(str_pageSize != null){
+			pageSize = Integer.parseInt(str_pageSize);
+		}
 		if(str_pageroffset != null){
 			pageNo = Integer.parseInt(str_pageroffset);
 		}

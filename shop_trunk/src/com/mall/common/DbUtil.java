@@ -11,7 +11,7 @@ public class DbUtil {
 	public DbUtil() {
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con = DriverManager.getConnection("jdbc:sqlserver://192.168.1.108:1433;databaseName=shop",
+			con = DriverManager.getConnection("jdbc:sqlserver://192.168.1.06:1433;databaseName=shop",
 					"sa", "123");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
